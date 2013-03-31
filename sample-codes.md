@@ -32,3 +32,37 @@ def main():
 
   return
 ```
+
+## functions
+
+```
+# without parameters
+
+def f() -> int:   # return type is given, f :: () -> int
+  return 1
+
+def g():    # return type is not given
+  return 1  # g :: () -> int, infered from return statement
+
+def h():
+  pass    # h :: () -> unit, because no return statement is there
+
+# with parameters
+
+def f1(x :: int) -> int:  # f1 :: (int) -> int
+  pass      # compile error, because f1 returns non-unit-like type
+            # but f1 has no return statement
+
+def g1(x :: int):
+  return x        # g1 :: (int) -> int, infered from return statement
+
+def f2(x :: int, y :: int) -> int:
+  return x + y    # f2 :: (int, int) -> int
+
+# recursion
+def factorial(x :: int):
+  if x <= 1:
+    return 1
+  else:
+    return x * factorial(x - 1)
+```
